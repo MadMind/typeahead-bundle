@@ -1,19 +1,21 @@
 {
-    "name": "ruben-ruvic/typeahead-bundle",
+    "name": "madmind/typeahead-bundle",
     "type": "symfony-bundle",
     "description": "A Symfony bundle that provides an autocomplete Typeahead form type compatible with Bootstrap v2|v3",
     "keywords": ["symfony","typeahead","autocomplete","bootstrap"],
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Rubén Cáceres",
-            "email": "ruben@ruvic.es"
-        }
-    ],
     "contributors" : [
         {
             "name": "Jason Morriss (Original package)",
             "email": "lifo2013@gmail.com"
+        },
+        {
+            "name": "Rubén Cáceres",
+            "email": "ruben@ruvic.es"
+        },
+        {
+            "name": "MadMind",
+            "email": "alex.madmind@gmail.com"
         }
     ],
     "require": {
