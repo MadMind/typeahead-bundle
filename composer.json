@@ -1,29 +1,42 @@
 {
-    "name": "ruben-ruvic/typeahead-bundle",
+    "name": "madmind/typeahead-bundle",
     "type": "symfony-bundle",
     "description": "A Symfony bundle that provides an autocomplete Typeahead form type compatible with Bootstrap v2|v3",
     "keywords": ["symfony","typeahead","autocomplete","bootstrap"],
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Rubén Cáceres",
-            "email": "ruben@ruvic.es"
-        }
-    ],
     "contributors" : [
         {
             "name": "Jason Morriss (Original package)",
             "email": "lifo2013@gmail.com"
+        },
+        {
+            "name": "Rubén Cáceres",
+            "email": "ruben@ruvic.es"
+        },
+        {
+            "name": "MadMind",
+            "email": "alex.madmind@gmail.com"
         }
     ],
     "require": {
+    },
+    "require-dev": {
+        "doctrine/collections": "^1.2|^2.0",
+        "doctrine/dbal": "^2|^3|^4",
+        "doctrine/orm": "^2|^3|^4",
+        "twig/twig": "^3.0",
+        "symfony/config": "^5.4|^6.4|^7.4|^8.0",
+        "symfony/dependency-injection": "^5.4|^6.4|^7.4|^8.0",
+        "symfony/form": "^5.4|^6.4|^7.4|^8.0",
+        "symfony/http-kernel": "^5.4|^6.4|^7.4|^8.0",
+        "symfony/twig-bridge": "^5.4|^6.4|^7.4|^8.0",
+        "symfony/routing": "^5.4|^6.4|^7.4|^8.0"
     },
     "suggest":  {
         "twbs/bootstrap": "Bootstrap framework",
         "mopa/bootstrap-bundle": "Bundle to automatically enable Bootstrap styles for Symfony"
     },
     "autoload": {
-        "psr-0": { "Lifo\\TypeaheadBundle": "" }
-    },
-    "target-dir": "Lifo/TypeaheadBundle"
+        "psr-4": { "Lifo\\TypeaheadBundle\\": "." }
+    }
 }

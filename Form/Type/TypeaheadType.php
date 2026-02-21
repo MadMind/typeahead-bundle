@@ -5,7 +5,7 @@ namespace Lifo\TypeaheadBundle\Form\Type;
 use Doctrine\ORM\EntityManager;
 use Lifo\TypeaheadBundle\Form\DataTransformer\EntitiesToPropertyTransformer;
 use Lifo\TypeaheadBundle\Form\DataTransformer\EntityToPropertyTransformer;
-use Symfony\Bundle\FrameworkBundle\Routing\Router;
+use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Exception\RuntimeException;
@@ -15,24 +15,23 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class TypeaheadType extends AbstractType
 {
-    public static $initialized = false;
+    public static bool $initialized = false;
 
-    protected $container;
-    protected $em;
-    protected $router;
+    protected Container $container;
+    protected EntityManager $em;
+    protected RouterInterface $router;
 
-    public function __construct(Container $container, EntityManager $em, Router $router)
+    public function __construct(Container $container, EntityManager $em, RouterInterface $router)
     {
         $this->container = $container;
         $this->em = $em;
         $this->router = $router;
     }
 
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         // @todo I could combine the transformers below into a single class...
         if ($options['multiple']) {
@@ -50,7 +49,7 @@ class TypeaheadType extends AbstractType
         }
     }
 
-    public function finishView(FormView $view, FormInterface $form, array $options)
+    public function finishView(FormView $view, FormInterface $form, array $options): void
     {
         parent::finishView($view, $form, $options);
 
@@ -79,19 +78,9 @@ class TypeaheadType extends AbstractType
     }
 
     /**
-     * Pre Symfony 2.7 compatibility
-     *
-     * @param OptionsResolverInterface $resolver
-     */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
-        $this->configureOptions($resolver);
-    }
-
-    /**
      * @param OptionsResolver $resolver
      */
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setRequired(array('render'));
         $resolver->setDefaults(array(
@@ -118,12 +107,12 @@ class TypeaheadType extends AbstractType
         ));
     }
 
-    public function getName()
+    public function getName(): string
     {
         return $this->getBlockPrefix();
     }
 
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'entity_typeahead';
     }

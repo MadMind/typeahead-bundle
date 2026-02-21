@@ -12,7 +12,10 @@ use Symfony\Component\HttpKernel\Kernel;
 class LifoTypeaheadExtension extends Extension implements PrependExtensionInterface
 {
 
-    public function load(array $configs, ContainerBuilder $container)
+    /**
+     * @throws \Exception
+     */
+    public function load(array $configs, ContainerBuilder $container): void
     {
 //        $configuration = new Configuration();
 //        $config = $this->processConfiguration($configuration, $configs);
@@ -24,7 +27,7 @@ class LifoTypeaheadExtension extends Extension implements PrependExtensionInterf
     /**
      * {@inheritDoc}
      */
-    public function prepend(ContainerBuilder $container)
+    public function prepend(ContainerBuilder $container): void
     {
         $bundles = $container->getParameter('kernel.bundles');
 
@@ -48,7 +51,7 @@ class LifoTypeaheadExtension extends Extension implements PrependExtensionInterf
      *
      * @return void
      */
-    protected function configureAsseticBundle(ContainerBuilder $container, array $config)
+    protected function configureAsseticBundle(ContainerBuilder $container, array $config): void
     {
         if ($container->hasExtension('assetic')) {
             $container->prependExtensionConfig('assetic', array(
@@ -79,7 +82,7 @@ class LifoTypeaheadExtension extends Extension implements PrependExtensionInterf
      *
      * @return void
      */
-    protected function configureTwigBundle(ContainerBuilder $container, array $config)
+    protected function configureTwigBundle(ContainerBuilder $container, array $config): void
     {
         if ($container->hasExtension('twig')) {
             $resources = array('LifoTypeaheadBundle:Form:typeahead.html.twig');
