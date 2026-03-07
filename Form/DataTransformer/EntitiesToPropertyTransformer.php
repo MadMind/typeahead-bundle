@@ -9,8 +9,9 @@ use Symfony\Component\Form\Exception\UnexpectedTypeException;
 
 class EntitiesToPropertyTransformer extends EntityToPropertyTransformer
 {
-    public function transform($array)
+    public function transform(mixed $value): mixed
     {
+        $array = $value;
         if (null === $array || $array === '') {
             return array();
         }
@@ -38,8 +39,9 @@ class EntitiesToPropertyTransformer extends EntityToPropertyTransformer
     }
 
 
-    public function reverseTransform($array)
+    public function reverseTransform(mixed $value): mixed
     {
+        $array = $value;
         if (null === $array || $array === '') {
             return array();
         }
